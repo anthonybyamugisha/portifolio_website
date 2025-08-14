@@ -1,8 +1,6 @@
-import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useState } from 'react';
 
 function Contact() {
-  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -82,43 +80,39 @@ function Contact() {
     });
 
     try {
-      // Using EmailJS to send emails
-      const result = await emailjs.sendForm(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        formRef.current,
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
-      );
-
-      if (result.status === 200) {
-        setFormStatus({
-          isSubmitting: false,
-          isSubmitted: true,
-          error: null,
-          success: true
-        });
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-        
-        // Clear errors
-        setErrors({});
-        
-        // Show success message for 5 seconds
-        setTimeout(() => {
-          setFormStatus(prev => ({
-            ...prev,
-            success: false
-          }));
-        }, 5000);
-      }
+      // Simulate form submission (replace with actual email service)
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // For now, we'll simulate success
+      // In a real implementation, you would send the email here
+      setFormStatus({
+        isSubmitting: false,
+        isSubmitted: true,
+        error: null,
+        success: true
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      // Clear errors
+      setErrors({});
+      
+      // Show success message for 8 seconds
+      setTimeout(() => {
+        setFormStatus(prev => ({
+          ...prev,
+          success: false
+        }));
+      }, 8000);
+      
     } catch (error) {
-      console.error('Email sending failed:', error);
+      console.error('Form submission failed:', error);
       setFormStatus({
         isSubmitting: false,
         isSubmitted: false,
@@ -204,6 +198,7 @@ function Contact() {
               <div>
                 <h3>Message Sent Successfully!</h3>
                 <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
+                <p><strong>Note:</strong> This is a demo form. For immediate contact, please use the direct contact methods below.</p>
                 <button type="button" className="reset-btn" onClick={resetForm}>
                   Send Another Message
                 </button>
@@ -225,7 +220,7 @@ function Contact() {
           
           {/* Contact Form */}
           {!formStatus.success && (
-            <form ref={formRef} onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Name *</label>
                 <input
