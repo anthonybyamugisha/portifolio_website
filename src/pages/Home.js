@@ -37,9 +37,7 @@ function Home() {
         </div>
         <div className="hero-visual">
           <div className="hero-avatar">
-            <div className="avatar-placeholder">
-              <i className="fas fa-user"></i>
-            </div>
+            <img src="/images/anthony.jpg" alt="BYAMUGISHA ANTHONY" />
           </div>
         </div>
       </section>
