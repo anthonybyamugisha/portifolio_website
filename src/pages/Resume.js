@@ -7,26 +7,10 @@ function Resume() {
         <h1>BYAMUGISHA ANTHONY</h1>
         <p>Aspiring Computer Scientist and Data Enthusiast</p>
         <p className="contact-line">Makerere, Kampala • +256748161708 / +256769864032 • byamugishanthony@gmail.com</p>
-        <div className="resume-actions">
-          <a className="resume-download" href="/resume.pdf" download>
-            <i className="fas fa-file-download"></i>
-            Download CV
-          </a>
-        </div>
       </header>
-      <nav className="resume-nav">
-        <a href="#personal-statement">Statement</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#interests">Interests</a>
-        <a href="#languages">Languages</a>
-        <a href="#achievements">Achievements</a>
-        <a href="#activities">Activities</a>
-        <a href="#references">References</a>
-      </nav>
 
       <section className="resume-section" id="personal-statement">
-        <h2>Personal Statement</h2>
+        <h2 className="personal-statement">Personal Statement</h2>
         <p>
           Enthusiastic and dedicated first-year Computer Science student at Makerere University with a growing
           passion for data science and analytics. Fast learner with strong problem-solving skills and eagerness to
@@ -36,49 +20,97 @@ function Resume() {
       </section>
 
       <section className="resume-section" id="education">
-        <h2>Education</h2>
+        <h2 id="education">Education</h2>
         <div className="edu-timeline">
           <div className="edu-col">
             <div className="edu-item">
-              <span className="edu-pill">Expected 2028</span>
-              <p className="edu-institution">Makerere University, Kampala</p>
-              <h3 className="edu-title">Bachelor of Science in Computer Science</h3>
-              <p className="edu-meta">Currently in Second Year</p>
+              <p><strong>Aug 2024 - Present</strong></p>
+              <h3>Makerere University, Kampala, Uganda</h3>
+              <p><strong>Bachelor of Science in Computer Science</strong></p>
+              <p>Currently pursuing a degree in Computer Science with a focus on modern software development and data science principles.</p>
             </div>
+
             <div className="edu-item">
-              <span className="edu-pill">2021 - 2023</span>
-              <p className="edu-institution">Buddo Secondary School</p>
-              <h3 className="edu-title">Uganda Advanced Certificate of Education (UACE)</h3>
-              <p className="edu-meta">Subjects: Physics, Economics, Mathematics • Points: 20</p>
+              <p><strong>2021 - 2023</strong></p>
+              <h3>Buddo Secondary School — Uganda Advanced Certificate of Education (UACE)</h3>
+              <p><strong>Advanced Level (A-Level)</strong></p>
+              <p><strong>Combination:</strong> PEM/ICT (Physics, Economics, Mathematics, and ICT)</p>
+              <p><strong>Scores:</strong> Scored <strong>20/20 points</strong>, with Distinctions in all subjects, ICT (D1), and General Paper (D2).</p>
             </div>
           </div>
+          
           <div className="edu-col">
             <div className="edu-item">
-              <span className="edu-pill">2023 - Present</span>
-              <p className="edu-institution">Makerere University, Kampala</p>
-              <h3 className="edu-title">Current Status: Second Year</h3>
-              <p className="edu-meta">BSc Computer Science</p>
+              <p><strong>2017 - 2020</strong></p>
+              <h3>Mwizi Secondary School — Uganda Certificate of Education (UCE / O-Level)</h3>
+              <p><strong>Ordinary Level (O-Level)</strong></p>
+              <p><strong>Scores:</strong> Scored <strong>14 aggregates</strong> in 8 subjects.</p>
             </div>
+
             <div className="edu-item">
-              <span className="edu-pill">2017 - 2020</span>
-              <p className="edu-institution">Mwizi Secondary School</p>
-              <h3 className="edu-title">Uganda Certificate of Education (UCE)</h3>
-              <p className="edu-meta">Aggregates: 14</p>
+              <p><strong>2009 - 2016</strong></p>
+              <h3>Akashabo Primary School — Primary Leaving Examination (PLE)</h3>
+              <p><strong>Primary Education</strong></p>
+              <p><strong>Scores:</strong> Scored aggregate <strong>8</strong> (all D2s).</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="resume-section two-col">
-        <div>
-          <h2 id="achievements">Achievements</h2>
-          <div className="resume-card">
-            <ul>
-              <li>Top performer in high school, achieving 20 points in UACE.</li>
-              <li>Successfully completed first programming project in university.</li>
-            </ul>
+      <section className="resume-section" id="awards">
+        <h2>Awards and Honors</h2>
+        <div className="awards-list">
+          <div className="award-entry">
+            <h3>Best Student Overall Award</h3>
+            <p>Recognized as the Best Student Overall in the Uganda Advanced Certificate of Education (UACE) examinations at Buddo S.S. Scored the maximum 20/20 points (all Distinctions, including ICT D1 and General Paper D2). Earned the prestigious title of "Achiever", an honor reserved exclusively for students attaining the highest academic distinction at Buddo S.S. Featured among the top students in Uganda (New Vision, March 2024).</p>
+            <p><strong>Institution:</strong> Buddo Secondary School</p>
+            <p><strong>Year:</strong> 2024</p>
+          </div>
+
+
+
+          <div className="award-entry">
+            <h3>Outstanding Academic Performance Award</h3>
+            <p>Recognized as the Best Student Overall at Mwizi Secondary School in the Uganda Certificate of Education (UCE) examinations. Scored 14 aggregates in 8 subjects, the highest performance in the school and across the county. Ranked 2nd in Rwampara District and among the top students.</p>
+            <p><strong>Institution:</strong> Mwizi Secondary School</p>
+            <p><strong>Year:</strong> 2021</p>
+          </div>
+
+          <div className="award-entry">
+            <h3>Best Student Overall Award</h3>
+            <p>Awarded for being the best student in the school during Primary Leaving Examination (PLE). Scored 8 aggregates, getting D2 in each paper.</p>
+            <p><strong>Institution:</strong> Akashabo Primary School</p>
+            <p><strong>Year:</strong> 2017</p>
           </div>
         </div>
+      </section>
+
+      <section className="resume-section" id="skills">
+        <h2 id="skills-heading">Skills</h2>
+        <div className="skills-table">
+                      <div className="skill-row">
+              <div className="skill-category">Programming Languages:</div>
+              <div className="skill-items">Python, JavaScript, Dart</div>
+            </div>
+                      <div className="skill-row">
+              <div className="skill-category">Frameworks & Libraries:</div>
+              <div className="skill-items">Django, React, Flutter, Pandas, NumPy, Matplotlib</div>
+            </div>
+                      <div className="skill-row">
+              <div className="skill-category">Database Management:</div>
+              <div className="skill-items">MySQL</div>
+            </div>
+          
+                      <div className="skill-row">
+              <div className="skill-category">Software Development Methodologies:</div>
+              <div className="skill-items">Agile</div>
+            </div>
+
+          
+        </div>
+      </section>
+
+      <section className="resume-section">
         <div>
           <h2 id="languages">Languages</h2>
           <div className="resume-card">
@@ -93,45 +125,23 @@ function Resume() {
       </section>
 
       <section className="resume-section grid">
-        <div className="resume-card">
-          <h2 id="skills">Skills and Learning Goals</h2>
-          <ul className="skills-list">
-            <li>Programming: Python, HTML, CSS (learning more)</li>
-            <li>Data Science & Analytics: Data manipulation, visualization, analysis</li>
-            <li>Web Development: Front-end basics; exploring back-end</li>
-            <li>Software: Microsoft Office (Word, Excel, PowerPoint, Access)</li>
-            <li>Soft Skills: Fast learner, problem-solving, communication</li>
-          </ul>
-        </div>
-        <div className="resume-card">
-          <h2 id="interests">Areas of Interest</h2>
-          <ul className="tags">
-            <li>Data Science & Analytics</li>
-            <li>Machine Learning & AI</li>
-            <li>Web Development</li>
-            <li>Software Engineering</li>
-          </ul>
-        </div>
-        <div className="resume-card">
-          <h2 id="activities">Extracurricular Activities</h2>
-          <ul>
-            <li>Active member of the University's Computer Science Club</li>
-            <li>Participant in online coding challenges and hackathons</li>
-            <li>Regular attendee of tech meetups and webinars on data science topics</li>
-          </ul>
-        </div>
+
+
+
         <div className="resume-card">
           <h2 id="references">References</h2>
-          <ul className="references">
-            <li>
-              <strong>Byamugisha Africano</strong><br/>
-              Manager – MIS & Data Analytics, Rural Digital Media (RDM) Africa • 0706107619
-            </li>
-            <li>
-              <strong>Mukasa Darlington</strong><br/>
-              IT Manager, MTN Uganda, Mulago Branch • 0779547692
-            </li>
-          </ul>
+          <div className="references-list">
+            <div className="reference-entry">
+              <h3>Byamugisha Africano</h3>
+              <p><strong>Manager – MIS & Data Analytics</strong> at Rural Digital Media (RDM) Africa</p>
+              <p>Phone: 0706107619</p>
+            </div>
+            <div className="reference-entry">
+              <h3>Mukasa Darlington</h3>
+              <p><strong>IT Manager</strong> at MTN Uganda, Mulago Branch</p>
+              <p>Phone: 0779547692</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
