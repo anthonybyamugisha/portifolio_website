@@ -1402,6 +1402,29 @@ body {
 /* Resume Page Styles */
 .resume {
   padding: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.semi-circle {
+  position: fixed;
+  right: 0px; /* fully visible for testing */
+  top: 50%; 
+  transform: translateY(-50%);
+  
+  width: 200px;
+  height: 400px;
+  border-radius: 200px 0 0 200px; /* left semi-circle */
+  
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 78, 121, 0.8),
+    rgba(46, 125, 50, 0.6)
+  );
+
+  z-index: 999;          /* very high z-index to test */
+  pointer-events: none;  /* won't block clicks */
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
 }
 
 .resume-header {
@@ -1498,7 +1521,9 @@ body {
 .resume-section h2.personal-statement::after,
 .resume-section h2#awards::after,
 .resume-section h2#skills-heading::after,
-.resume-section h2#education::after {
+.resume-section h2#education::after,
+.resume-section h2#languages::after,
+.resume-section h2#references::after {
   content: '';
   position: absolute;
   bottom: -0.5rem;
@@ -1511,7 +1536,9 @@ body {
 .resume-section h2.personal-statement,
 .resume-section h2#awards,
 .resume-section h2#skills-heading,
-.resume-section h2#education {
+.resume-section h2#education,
+.resume-section h2#languages,
+.resume-section h2#references {
   position: relative;
 }
 
@@ -1617,19 +1644,24 @@ body {
 }
 
 /* References Section */
+.references-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
 .references-list {
   margin-top: 1rem;
 }
 
 .reference-entry {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #E0E0E0;
-}
-
-.reference-entry:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
+  flex: 1;
+  padding: 1.5rem;
+  background: #F8F9FA;
+  border-radius: 8px;
+  border: 1px solid #E0E0E0;
 }
 
 .reference-entry h3 {
@@ -1751,7 +1783,7 @@ body {
 
 .resume-section.grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
@@ -1794,6 +1826,20 @@ body {
   }
   .resume-header h1 {
     font-size: 2.2rem;
+  }
+  
+  .languages-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .language-item {
+    min-width: auto;
+  }
+  
+  .references-container {
+    flex-direction: column;
+    gap: 1rem;
   }
 }
 
@@ -1929,6 +1975,61 @@ body {
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* Languages Section */
+.languages-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.language-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #F8F9FA;
+  border-radius: 8px;
+  border: 1px solid #E0E0E0;
+  flex: 1;
+  min-width: 150px;
+}
+
+.language-name {
+  font-weight: 600;
+  color: #1F4E79;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.language-proficiency {
+  color: #666666;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.proficiency-circles {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #E0E0E0;
+  border: 1px solid #CCCCCC;
+}
+
+.circle.filled {
+  background-color: #1F4E79;
+  border-color: #1F4E79;
 }
 
 /* Skills Section */

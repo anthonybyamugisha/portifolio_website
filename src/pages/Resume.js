@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Resume() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollTop / docHeight;
+      setScrollProgress(scrollPercent);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="resume">
+      <div 
+        className="semi-circle"
+        style={{
+          transform: `translateY(-50%) scale(${1 + scrollProgress * 0.5})`,
+          opacity: 0.8 + scrollProgress * 0.2
+        }}
+      ></div>
       <header className="resume-header">
         <h1>BYAMUGISHA ANTHONY</h1>
         <p>Aspiring Computer Scientist and Data Enthusiast</p>
@@ -113,13 +134,42 @@ function Resume() {
       <section className="resume-section">
         <div>
           <h2 id="languages">Languages</h2>
-          <div className="resume-card">
-            <ul>
-              <li>English — Fluent</li>
-              <li>Runyankole — Good proficiency</li>
-              <li>Luganda — Good proficiency</li>
-              <li>Kiswahili — Fair proficiency</li>
-            </ul>
+          <div className="languages-container">
+            <div className="language-item">
+              <div className="language-name">English</div>
+              <div className="language-proficiency">Proficient</div>
+              <div className="proficiency-circles">
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle"></div>
+              </div>
+            </div>
+            
+            <div className="language-item">
+              <div className="language-name">Runyankole, Rukiga</div>
+              <div className="language-proficiency">Native</div>
+              <div className="proficiency-circles">
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+              </div>
+            </div>
+            
+            <div className="language-item">
+              <div className="language-name">Luganda</div>
+              <div className="language-proficiency">Proficient</div>
+              <div className="proficiency-circles">
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle filled"></div>
+                <div className="circle"></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -130,16 +180,16 @@ function Resume() {
 
         <div className="resume-card">
           <h2 id="references">References</h2>
-          <div className="references-list">
+          <div className="references-container">
             <div className="reference-entry">
               <h3>Byamugisha Africano</h3>
               <p><strong>Manager – MIS & Data Analytics</strong> at Rural Digital Media (RDM) Africa</p>
               <p>Phone: 0706107619</p>
             </div>
             <div className="reference-entry">
-              <h3>Mukasa Darlington</h3>
-              <p><strong>IT Manager</strong> at MTN Uganda, Mulago Branch</p>
-              <p>Phone: 0779547692</p>
+              <h3>Engineer Herbert Nyakoojo</h3>
+              <p><strong>Software Engineer</strong> at MTN Uganda</p>
+              <p>Phone: +256 772123174</p>
             </div>
           </div>
         </div>
