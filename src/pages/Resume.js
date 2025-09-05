@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 function Resume() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -11,8 +12,17 @@ function Resume() {
       setScrollProgress(scrollPercent);
     };
 
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   return (
@@ -22,6 +32,13 @@ function Resume() {
         style={{
           transform: `translateY(-50%) scale(${1 + scrollProgress * 0.5})`,
           opacity: 0.8 + scrollProgress * 0.2
+        }}
+      ></div>
+      <div 
+        className="cursor-glow"
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y
         }}
       ></div>
       <header className="resume-header">
