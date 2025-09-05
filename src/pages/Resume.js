@@ -135,11 +135,6 @@ function Resume() {
               <div className="skill-items">Django, React, Flutter, Pandas, NumPy, Matplotlib</div>
             </div>
                       <div className="skill-row">
-              <div className="skill-category">Database Management:</div>
-              <div className="skill-items">MySQL</div>
-            </div>
-          
-                      <div className="skill-row">
               <div className="skill-category">Software Development Methodologies:</div>
               <div className="skill-items">Agile</div>
             </div>

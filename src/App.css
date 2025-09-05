@@ -367,18 +367,26 @@ body {
 
 .what-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .what-card {
   background: #FFFFFF;
   border: 1px solid #E0E0E0;
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 2.5rem;
   text-align: left;
   box-shadow: 0 6px 20px rgba(0,0,0,0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .what-card:hover {
@@ -523,6 +531,11 @@ body {
 @media (max-width: 768px) {
   .beyond-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .what-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 }
 
@@ -1589,7 +1602,7 @@ body {
   opacity: 0;
   transform: translateY(50px);
   animation: sectionSlideIn 0.8s ease-out forwards;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .resume-section:nth-child(1) { animation-delay: 0.5s; }
@@ -2371,21 +2384,21 @@ body {
 
 /* CTA Section */
 .cta-section {
-  padding: 5rem 0;
+  padding: 3rem 0;
   background: #1F4E79;
   color: #FFFFFF;
   text-align: center;
 }
 
 .cta-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
   font-weight: 700;
 }
 
 .cta-section p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
   color: #E0E0E0;
 }
 
@@ -2397,8 +2410,8 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
-  background: linear-gradient(45deg, #FFD700, #FFA500);
-  color: #1A1A1A;
+  background: #1F4E79;
+  color: #FFFFFF;
   border-radius: 50px;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(31, 78, 121, 0.4);
@@ -2407,7 +2420,7 @@ body {
 .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(31, 78, 121, 0.6);
-  color: #1A1A1A;
+  color: #FFFFFF;
 }
 
 /* Container utility */

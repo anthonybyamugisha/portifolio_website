@@ -59,37 +59,7 @@ function Home() {
               <p>Crafting cross‑platform apps with Flutter for Android and iOS.</p>
               <ul className="what-tags">
                 <li>Flutter</li>
-              </ul>
-            </div>
-            <div className="what-card">
-              <i className="fas fa-robot what-icon"></i>
-              <h3>Machine Learning</h3>
-              <p>Prototyping models using Python data science libraries.</p>
-              <ul className="what-tags">
-                <li>Python</li>
-                <li>NumPy</li>
-                <li>Pandas</li>
-                <li>scikit‑learn</li>
-              </ul>
-            </div>
-            <div className="what-card">
-              <i className="fas fa-magic what-icon"></i>
-              <h3>Prompt Engineering</h3>
-              <p>Designing effective prompts and workflows for LLM-powered solutions.</p>
-              <ul className="what-tags">
-                <li>Prompt Design</li>
-                <li>LLMs</li>
-                <li>Automation</li>
-              </ul>
-            </div>
-            <div className="what-card">
-              <i className="fas fa-database what-icon"></i>
-              <h3>Database Management</h3>
-              <p>Modeling data and writing performant queries using SQL.</p>
-              <ul className="what-tags">
-                <li>SQL</li>
-                <li>PostgreSQL</li>
-                <li>MySQL</li>
+                <li>Firebase</li>
               </ul>
             </div>
             <div className="what-card">
@@ -100,6 +70,7 @@ function Home() {
                 <li>Dialog Design</li>
                 <li>LLMs</li>
                 <li>Web Integration</li>
+                <li>Bot Training</li>
               </ul>
             </div>
           </div>
@@ -108,44 +79,6 @@ function Home() {
 
       
 
-      <section className="testimonials-section">
-        <div className="container">
-          <h2 className="testimonials-title">Testimonials</h2>
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <div className="testimonial-header">
-                <img className="testimonial-avatar" src="/images/allan.jpg" alt="Allan - All Organic Honey" />
-                <div>
-                  <h3>Allan</h3>
-                  <p className="role">Founder, All Organic Honey</p>
-                </div>
-              </div>
-              <p className="testimonial-quote">
-                “Our All Organic Honey website was designed with a clean product
-                showcase and a simplified checkout. We also deployed an AI chatbot that
-                significantly increased customer responses and streamlined inquiries.
-                Online honey sales increased and our brand now feels more trustworthy to customers.”
-              </p>
-            </div>
-
-            <div className="testimonial-card">
-              <div className="testimonial-header">
-                <img className="testimonial-avatar" src="/images/alban.jpg" alt="Alban - Business Owner & Trader" />
-                <div>
-                  <h3>Alban</h3>
-                  <p className="role">Business Owner & Trader</p>
-                </div>
-              </div>
-              <p className="testimonial-quote">
-                “The AI chatbot integrated on our website improved response time and made
-                ordering effortless. A Python trading bot for XAUUSD now generates signals
-                automatically—boosting profitability while cutting screen time and the stress
-                of chart analysis.”
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="beyond-section">
         <div className="container">
