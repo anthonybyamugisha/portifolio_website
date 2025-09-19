@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Projects() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollTop / docHeight;
+      setScrollProgress(scrollPercent);
+    };
+
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
   const projects = [
     {
       id: 1,
@@ -33,6 +56,20 @@ function Projects() {
 
   return (
     <div className="projects">
+      <div 
+        className="semi-circle"
+        style={{
+          transform: `translateY(-50%) scale(${1 + scrollProgress * 0.5})`,
+          opacity: 0.8 + scrollProgress * 0.2
+        }}
+      ></div>
+      <div 
+        className="cursor-glow"
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y
+        }}
+      ></div>
       <div className="projects-header">
         <h1>My Projects</h1>
         <p>Here are some of the projects I've worked on. Each one represents a unique challenge and learning experience.</p>

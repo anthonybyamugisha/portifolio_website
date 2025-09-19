@@ -1,21 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Contact() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
-  
-  const [formStatus, setFormStatus] = useState({
-    isSubmitting: false,
-    isSubmitted: false,
-    error: null,
-    success: false
-  });
 
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollTop / docHeight;
+      setScrollProgress(scrollPercent);
+    };
+
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   // Form validation
   const validateForm = () => {
@@ -65,81 +81,66 @@ function Contact() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     if (!validateForm()) {
       return;
     }
 
-    setFormStatus({
-      isSubmitting: true,
-      isSubmitted: false,
-      error: null,
-      success: false
-    });
+    // Create mailto link with pre-filled content
+    const emailBody = `Hello Anthony,
 
-    try {
-      // Simulate form submission (replace with actual email service)
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // For now, we'll simulate success
-      // In a real implementation, you would send the email here
-      setFormStatus({
-        isSubmitting: false,
-        isSubmitted: true,
-        error: null,
-        success: true
-      });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
-      // Clear errors
-      setErrors({});
-      
-      // Show success message for 8 seconds
-      setTimeout(() => {
-        setFormStatus(prev => ({
-          ...prev,
-          success: false
-        }));
-      }, 8000);
-      
-    } catch (error) {
-      console.error('Form submission failed:', error);
-      setFormStatus({
-        isSubmitting: false,
-        isSubmitted: false,
-        error: 'Failed to send message. Please try again or contact me directly via email.',
-        success: false
-      });
-    }
-  };
+You have received a new message from your portfolio website.
 
-  const resetForm = () => {
+--- Contact Details ---
+Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+--- Message ---
+${formData.message}
+
+--- End of Message ---
+
+This message was sent from your portfolio contact form.
+
+Best regards,
+Portfolio Contact System`;
+
+    const mailtoLink = `mailto:byamugishanthony@gmail.com?subject=${encodeURIComponent(`Portfolio Contact: ${formData.subject}`)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open Gmail with pre-filled email immediately
+    window.open(mailtoLink, '_blank');
+    
+    // Reset form
     setFormData({
       name: '',
       email: '',
       subject: '',
       message: ''
     });
+    
+    // Clear errors
     setErrors({});
-    setFormStatus({
-      isSubmitting: false,
-      isSubmitted: false,
-      error: null,
-      success: false
-    });
   };
 
   return (
     <div className="contact">
+      <div 
+        className="semi-circle"
+        style={{
+          transform: `translateY(-50%) scale(${1 + scrollProgress * 0.5})`,
+          opacity: 0.8 + scrollProgress * 0.2
+        }}
+      ></div>
+      <div 
+        className="cursor-glow"
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y
+        }}
+      ></div>
       <div className="contact-header">
         <h1>Get In Touch</h1>
         <p>I'm BYAMUGISHA ANTHONY, and I'm always interested in new opportunities and exciting projects. Let's discuss how we can work together!</p>
@@ -168,7 +169,7 @@ function Contact() {
             <i className="fas fa-map-marker-alt"></i>
             <div>
               <h3>Location</h3>
-              <p>Rwampara, Uganda</p>
+              <p>Makerere, Kampala Uganda</p>
             </div>
           </div>
           
@@ -191,36 +192,8 @@ function Contact() {
         <div className="contact-form">
           <h2>Send Me a Message</h2>
           
-          {/* Success Message */}
-          {formStatus.success && (
-            <div className="form-message success">
-              <i className="fas fa-check-circle"></i>
-              <div>
-                <h3>Message Sent Successfully!</h3>
-                <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
-                <p><strong>Note:</strong> This is a demo form. For immediate contact, please use the direct contact methods below.</p>
-                <button type="button" className="reset-btn" onClick={resetForm}>
-                  Send Another Message
-                </button>
-              </div>
-            </div>
-          )}
-          
-          {/* Error Message */}
-          {formStatus.error && (
-            <div className="form-message error">
-              <i className="fas fa-exclamation-circle"></i>
-              <div>
-                <h3>Message Failed to Send</h3>
-                <p>{formStatus.error}</p>
-                <p>You can also contact me directly at byamugishanthony@gmail.com</p>
-              </div>
-            </div>
-          )}
-          
           {/* Contact Form */}
-          {!formStatus.success && (
-            <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Name *</label>
                 <input
@@ -283,23 +256,12 @@ function Contact() {
               
               <button 
                 type="submit" 
-                className={`submit-btn ${formStatus.isSubmitting ? 'loading' : ''}`}
-                disabled={formStatus.isSubmitting}
+                className="submit-btn"
               >
-                {formStatus.isSubmitting ? (
-                  <>
-                    <i className="fas fa-spinner fa-spin"></i>
-                    Sending Message...
-                  </>
-                ) : (
-                  <>
-                    <i className="fas fa-paper-plane"></i>
-                    Send Message
-                  </>
-                )}
+                <i className="fas fa-paper-plane"></i>
+                Send
               </button>
             </form>
-          )}
           
           {/* Alternative Contact Methods */}
           <div className="alternative-contact">
