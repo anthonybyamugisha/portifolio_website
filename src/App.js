@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
@@ -7,26 +7,41 @@ import Contact from './pages/Contact';
 import Resume from './pages/Resume'; 
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <Router>
       <div className="App">
         <nav className="navbar">
           <div className="nav-container">
-            <Link to="/" className="nav-logo">
+            <Link to="/" className="nav-logo" onClick={closeMenu}>
               anthony.tech
             </Link>
-            <ul className="nav-menu">
+            <div className="hamburger" onClick={toggleMenu}>
+              <span className={`bar ${isMenuOpen ? 'active' : ''}`}></span>
+              <span className={`bar ${isMenuOpen ? 'active' : ''}`}></span>
+              <span className={`bar ${isMenuOpen ? 'active' : ''}`}></span>
+            </div>
+            <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
               <li className="nav-item">
-                <Link to="/" className="nav-link">About Me</Link>
+                <Link to="/" className="nav-link" onClick={closeMenu}>About Me</Link>
               </li>
               <li className="nav-item">
-                <Link to="/resume" className="nav-link">Resume</Link>
+                <Link to="/resume" className="nav-link" onClick={closeMenu}>Resume</Link>
               </li>
               <li className="nav-item">
-                <Link to="/projects" className="nav-link">Projects</Link>
+                <Link to="/projects" className="nav-link" onClick={closeMenu}>Projects</Link>
               </li>
               <li className="nav-item">
-                <Link to="/contact" className="nav-link">Contact</Link>
+                <Link to="/contact" className="nav-link" onClick={closeMenu}>Contact</Link>
               </li>
             </ul>
           </div>
