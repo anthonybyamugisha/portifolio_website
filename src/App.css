@@ -659,10 +659,12 @@ body {
   
   .nav-logo {
     font-size: 1.5rem;
+    order: 1;
   }
   
   .hamburger {
     display: flex;
+    order: 2;
   }
   
   .nav-menu {
