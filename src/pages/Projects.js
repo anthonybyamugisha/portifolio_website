@@ -71,11 +71,14 @@ function Projects() {
         }}
       ></div>
       <div className="projects-header">
-        <h1>My Projects</h1>
-        <p>Here are some of the projects I've worked on. Each one represents a unique challenge and learning experience.</p>
+        <div className="container">
+          <h1>My Projects</h1>
+          <p>Here are some of the projects I've worked on. Each one represents a unique challenge and learning experience.</p>
+        </div>
       </div>
       
-      <div className="projects-grid">
+      <div className="container">
+        <div className="projects-grid">
         {projects.map((project) => (
           <div key={project.id} className="project-card">
             <div className="project-image">
@@ -104,6 +107,7 @@ function Projects() {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

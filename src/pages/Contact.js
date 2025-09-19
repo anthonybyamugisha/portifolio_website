@@ -142,12 +142,15 @@ Portfolio Contact System`;
         }}
       ></div>
       <div className="contact-header">
-        <h1>Get In Touch</h1>
-        <p>I'm BYAMUGISHA ANTHONY, and I'm always interested in new opportunities and exciting projects. Let's discuss how we can work together!</p>
+        <div className="container">
+          <h1>Get In Touch</h1>
+          <p>I'm BYAMUGISHA ANTHONY, and I'm always interested in new opportunities and exciting projects. Let's discuss how we can work together!</p>
+        </div>
       </div>
       
-      <div className="contact-content">
-        <div className="contact-info">
+      <div className="container">
+        <div className="contact-content">
+          <div className="contact-info">
           <h2>Contact Information</h2>
           <div className="contact-item">
             <i className="fas fa-envelope"></i>
@@ -276,6 +279,7 @@ Portfolio Contact System`;
                 Call Me
               </a>
             </div>
+          </div>
           </div>
         </div>
       </div>
